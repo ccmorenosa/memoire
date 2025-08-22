@@ -2,13 +2,16 @@
   "name": "reveal.js-remote",
   "description": "A presentation control server",
   "author": "Jochen Wierum, Cologne Intelligence GmbH",
+  "homepage": "https://ccmorenosa.github.io/memoire",
   "license": "MIT",
   "scripts": {
     "build": "gulp default",
     "app": "gulp app",
     "diapo": "gulp diapo",
     "remote": "gulp remote",
-    "start": "http-server -c-1 dist/presentations"
+    "gh-remote": "node dist/presentations",
+    "start": "http-server -c-1 dist/presentations",
+    "deploy": "gh-pages -d dist/presentations"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@tailwindcss/postcss": "^4.0.3",
     "core-js": "^3.38.1",
+    "gh-pages": "^6.3.0",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean": "^0.4.0",

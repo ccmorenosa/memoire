@@ -209,6 +209,7 @@ Help()
     echo "-h, --help            Print this Help."
     echo "-b, --build [BUILD]   Set the build directory."
     echo "-d, --dest [DEST]     Set the destination directory."
+    echo "-g, --gh-pages        Deploy to github pages."
     echo "-i, --install         Install the needed package for the slides."
     echo "-l, --loop            Make a loop to constant update and refresh the"
     echo "                      slides."
@@ -222,8 +223,8 @@ Help()
 CheckNode
 
 
-ARGS=$(getopt -o hilnrb:s:d:\
-    --long help,install,loop,no-update,remote,build:,source:,dest: \
+ARGS=$(getopt -o hgilnrb:s:d:\
+    --long help,gh-pages,install,loop,no-update,remote,build:,source:,dest: \
     -- "$@")
 
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; return ; fi
@@ -232,6 +233,7 @@ if [ $? != 0 ] ; then echo "Terminating..." >&2 ; return ; fi
 eval set -- "$ARGS"
 
 ORIGIN=$(pwd)
+PAGES=false
 REMOTE=false
 INSTALL=false
 UPDATE=true
@@ -247,6 +249,8 @@ while true; do
             DEST="$2"; shift 2 ;;
         -b|--build)
             BUILD="$2"; shift 2 ;;
+        -g|--gh-pages)
+            PAGES=true; shift ;;
         -i|--install)
             INSTALL=true; shift ;;
         -l|--loop)
@@ -266,7 +270,22 @@ if [ ! -d $DEST ]; then
     mkdir $DEST
 fi
 
-if $REMOTE; then
+
+if $PAGES; then
+
+    echo $PAGES
+    BuildRemote $BUILD $DEST $SOURCE true true
+
+    DEST=$DEST/output_remote
+    cd $DEST
+
+    rm $DEST/dist/presentations/main.js
+    mv $DEST/scripts/main_remote.js $DEST/dist/presentations/main.js
+
+    npm run deploy
+    cd $ORIGIN
+
+elif $REMOTE; then
 
     BuildRemote $BUILD $DEST $SOURCE $INSTALL $UPDATE
 
