@@ -1,0 +1,59 @@
+\documentclass[12pt]{standalone}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+%% Color package and configuration.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amsmath,amssymb,xfrac}
+
+%% Commands package.
+\usepackage{etoolbox}
+
+%% Fonts package.
+\usepackage[no-math]{fontspec}
+
+%%% Configure pgf and tikz.
+
+\pgfplotsset{
+    compat=1.18,
+    colormap={quanteem}{rgb255=(18, 45, 141) rgb255=(249, 18, 60)}
+}
+
+\usetikzlibrary{arrows.meta}
+\definecolor{cyan}{HTML}{5BCEFA}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{circuitikz}[
+    Csm/.style={C, capacitors/scale=1.2},
+    Rsm/.style={R, resistors/scale=1.2},
+    Zsm/.style={generic, resistors/scale=1.2},
+    Lsm/.style={L, inductors/scale=1.2},
+    Vsm/.style={american voltage source, sources/scale=1.25},
+    Amp/.style={rmeterwa, instruments/scale=1.5, t={\LARGE A}},
+    Ampli/.style={amp, blocks/scale=0.75}
+]
+
+
+
+    \draw (0, 0) node [sground] {} to[Vsm, invert] ++ (0, 2)
+    to [Zsm, l^={\LARGE \(Z\)}] ++ (2, 0) to[Ampli, l^={\LARGE \(A\)}]++ (1, 0)
+    to[short, -o]++ (.5, 0);
+
+    % \node at (3, 0) {\LARGE \(T > \SI{0}{\kelvin}\)};
+
+\end{circuitikz}
+\end{document}

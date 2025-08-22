@@ -1,0 +1,76 @@
+/* Tailwind cong */
+@import "tailwindcss";
+
+/* @layer components {
+  .bg-tiles {
+    background-size: 73px 73px;
+    background-image: linear-gradient(currentColor 1px, transparent 1px),
+      linear-gradient(to right, currentColor 1px, transparent 1px);
+    @apply -m-0.5;
+  }
+} */
+
+@theme {
+    --color-blaugrau: #507289;
+    --color-gruengrau: #77b6ba;
+    --color-dunkelblau: #122D8D;
+    --color-hellblau: #5BCEFA;
+    --color-dunkelgruen: #006b6b;
+    --color-hellgruen: #1BCF5D;
+    --color-violett: #4c3575;
+    --color-pink: #F5A9B8;
+    --color-lila: #A30262;
+    --color-rot: #F9123C;
+    --color-orange: #FF6700;
+    --color-schwarz: #000000;
+    --color-weiss: #ffffff;
+}
+
+@layer base {
+    [hidden]:where(:not([hidden="until-found"])) {
+        display: block !important;
+    }
+}
+
+section {
+    @apply h-full;
+    top: 0 !important;
+    text-align: left;
+}
+
+.fragment.highlight-orange,
+.fragment.highlight-pink,
+.fragment.highlight-gruen,
+.fragment.highlight-rot,
+.fragment.highlight-blau {
+    color: var(--color-schwarz);
+}
+
+.fragment.highlight-orange.current-fragment {
+    color: var(--color-orange);
+    font-weight: bold;
+}
+
+.fragment.highlight-bold.current-fragment {
+    font-weight: bold;
+}
+
+.fragment.highlight-pink.current-fragment {
+    color: var(--color-pink);
+    font-weight: bold;
+}
+
+.fragment.highlight-gruen.current-fragment {
+    color: var(--color-hellgruen);
+    font-weight: bold;
+}
+
+.fragment.highlight-rot.current-fragment {
+    color: var(--color-rot);
+    font-weight: bold;
+}
+
+.fragment.highlight-blau.current-fragment {
+    color: var(--color-dunkelblau);
+    font-weight: bold;
+}

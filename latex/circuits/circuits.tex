@@ -1,0 +1,57 @@
+\documentclass[12pt]{standalone}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+%% Color package and configuration.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amsmath,amssymb,xfrac}
+
+%% Commands package.
+\usepackage{etoolbox}
+
+%% Fonts package.
+\usepackage[no-math]{fontspec}
+
+%%% Configure pgf and tikz.
+
+\pgfplotsset{
+    compat=1.18,
+    colormap={quanteem}{rgb255=(18, 45, 141) rgb255=(249, 18, 60)}
+}
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees,3d,calc, math}
+
+\usetikzlibrary{arrows.meta}
+\definecolor{bkg}{HTML}{d8d8d8}
+\definecolor{cyan}{HTML}{5BCEFA}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{blaugrau}{HTML}{507289}  % blaugrau: #507289
+\definecolor{gruengrau}{HTML}{77b6ba}  % gruengrau: #77b6ba
+\definecolor{dunkelblau}{HTML}{122D8D}  % dunkelblau: #122D8D
+\definecolor{hellblau}{HTML}{5BCEFA}  % hellblau: #5BCEFA
+\definecolor{dunkelgruen}{HTML}{006b6b}  % dunkelgruen: #006b6b
+\definecolor{hellgruen}{HTML}{1BCF5D}  % hellgruen: #1BCF5D
+\definecolor{violett}{HTML}{4c3575}  % violett: #4c3575
+\definecolor{pink}{HTML}{F5A9B8}  % pink: #F5A9B8
+\definecolor{lila}{HTML}{A30262}  % lila: #A30262
+\definecolor{rot}{HTML}{F9123C}  % rot: #F9123C
+\definecolor{orange}{HTML}{D52D00}  % orange: #D52D00
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+    \input{noise}
+    % \input{Z_RLC}
+
+\end{document}

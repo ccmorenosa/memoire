@@ -1,0 +1,110 @@
+\documentclass{standalone}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{pgfplots}% Required for inserting images
+\usepackage{circuitikz}
+
+%%% Configure pgf and tikz.
+\pgfplotsset{compat=1.15}
+
+\usetikzlibrary{arrows.meta}
+% \usetikzlibrary{circuits.ee.IEC}
+\definecolor{cyan}{HTML}{a6e6ff}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{circuitikz}
+
+    \draw [dashed, very thick] (3, 0) -- (5, 0) (10, 0) -- (12, 0);
+
+    \draw [line width=15, Blue]
+    (0.5, 1) -- (1, 1) to[in=180, out=0] (3, 0.35) -- (5, 0.35) to[in=180, out=0]
+    (7, 1) -- (8, 1) to[in=180, out=0] (10, 0.35) -- (12, 0.35) to[in=180, out=0]
+    (14, 1) -- (14.5, 1);
+
+    \draw [line width=15, Blue]
+    (0.5, -1) -- (1, -1) to[in=180, out=0] (3, -0.35) -- (5, -0.35)
+    to[in=180, out=0] (7, -1) -- (8, -1) to[in=180, out=0] (10, -0.35) --
+    (12, -0.35) to[in=180, out=0] (14, -1) -- (14.5, -1);
+
+    \draw [white, dashed, line width=2, -Latex]
+    (0.5, 1) -- (1, 1) to[in=180, out=0] (3, 0.35) -- (5, 0.35) to[in=180, out=0]
+    (7, 1) -- (8, 1) to[in=180, out=0] (10, 0.35) -- (12, 0.35) to[in=180, out=0]
+    (14, 1) -- (14.5, 1);
+
+    \draw [white, dashed, line width=2]
+    (10.5, 0.35) to[in=180, out=0] (11.5, -0.35);
+
+    \draw [white, dashed, line width=2, -Latex] (3.5, 0.35)
+    to[in=180, out=0] (4.5, -0.35) -- (5, -0.35)
+    to[in=180, out=0] (7, -1) -- (8, -1) to[in=180, out=0] (10, -0.35) --
+    (12, -0.35) to[in=180, out=0] (14, -1) -- (14.5, -1);
+
+    \draw [white, dashed, line width=2]
+    (10.5, -0.35) to[in=180, out=0] (11.5, 0.35);
+
+    \node at (-0.2, 1) {\LARGE $\left|0>\right.$};
+    \node at (-0.2, -1) {\LARGE $\left|1>\right.$};
+
+    \node at (15.2, 1) {\LARGE $\left|0>\right.$};
+    \node at (15.2, -1) {\LARGE $\left|1>\right.$};
+
+    % \node at (15.2, 1) {\LARGE $I_0$};
+    % \node at (15.2, -1) {\LARGE $I_1$};
+
+    \draw [very thick] (7.5, 0) circle[radius=0.4] (7.5, 0)
+    ++ (-45:0.4) --++ (135:0.8) ++ (-45:0.4)
+    ++ (-135:0.4) --++ (45:0.8) node [right] {\LARGE $B$};
+
+    \node at (4, 1) {\textcolor{QuanTEEMBlue}{\Huge $\theta$}};
+
+    \node at (6.5, 0) {\textcolor{QuanTEEMRed}{\Huge $\mathbf{\varphi}$}};
+
+    % \node at (1.8, 2) {\Huge \textbf{Initialization}};
+    % \draw [black, fill=cyan] (0.8, 1) circle [radius=0.2];
+
+    % \draw [black, fill=cyan] (4.8, 0.35) circle [radius=0.2];
+    % \draw [black, fill=cyan] (4.8, -0.35) circle [radius=0.2];
+
+    % \draw [black, fill=cyan] (7.5, 1) circle [radius=0.2];
+    % \draw [black, fill=cyan] (7.5, -1) circle [radius=0.2];
+
+    \draw [black, fill=cyan] (14.3, 1) circle [radius=0.2];
+    \draw [black, fill=cyan] (14.3, -1) circle [radius=0.2];
+
+    % Noise
+    % \draw [thick] (15, 3.5) node[plain mono amp, rotate=90, scale=0.6] (ampA){};
+    % \draw [thick] (16, 5.5) node[plain mono amp, scale=0.6] (ampB){};
+
+    % \draw [thick] (14.5, 1) -- (15, 1)
+    % to[C] (16.5, 1) --
+    % (16.5, 1.5) to (17, 1.5) node[sground] {}
+    % (16.5, 1.5) -- (16.5, 2) to[L] (15, 2) -- (15, 1)
+    % (15, 2) -- (ampA.in) (ampA.out) -- (15, 5.5) to (ampB.in);
+
+    % \draw [thick] (15, -3.5) node[plain mono amp, rotate=90, scale=0.6] (ampA){};
+    % \draw [thick] (16, -5.5) node[plain mono amp, scale=0.6] (ampB){};
+
+    % \draw [thick] (14.5, -1) -- (15, -1)
+    % to[C] (16.5, -1) --
+    % (16.5, -1.5) to (17, -1.5) node[sground] {}
+    % (16.5, -1.5) -- (16.5, -2) to[L] (15, -2) -- (15, -1)
+    % (15, -2) -- (ampA.in) (ampA.out) -- (15, -5.5) to (ampB.in);
+
+\end{circuitikz}
+\end{document}

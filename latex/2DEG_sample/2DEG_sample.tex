@@ -1,0 +1,58 @@
+\documentclass[12pt]{standalone}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+%% Color package and configuration.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amsmath,amssymb,xfrac}
+
+%% Commands package.
+\usepackage{etoolbox}
+
+%% Fonts package.
+\usepackage[no-math]{fontspec}
+
+%%% Configure pgf and tikz.
+
+\pgfplotsset{
+    compat=1.18,
+    colormap={quanteem}{rgb255=(18, 45, 141) rgb255=(249, 18, 60)}
+}
+
+\usetikzlibrary{arrows.meta}
+\definecolor{cyan}{HTML}{5BCEFA}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{circuitikz}
+    \draw[thick, -Latex] (-3, 0) -- (-3, 8) node[midway, above, rotate=90] {
+        \LARGE \(z\), growth direction
+    };
+
+    \draw[thick, fill=QuanTEEMBlue!50] (-2, 0) rectangle++ (6, 4) node[midway, below]
+    {\LARGE \ce{GaAs}};
+
+    \draw[thick, fill=gray!30] (-2, 4) rectangle++ (6, 2) node[midway]
+    {\LARGE \ce{AlGaAs}};
+
+    \draw[fill=cyan] (-2, 4) rectangle++ (6, 0.25);
+    \draw[Latex-, opacity=1] (4, 4.125) --++ (1, 0) node[right] {\LARGE 2DEG};
+
+    \draw[thick, fill=gray!50] (-2, 6) rectangle++ (6, 2) node[midway]
+    {\LARGE \(n-\ce{AlGaAs}\)};
+
+\end{circuitikz}
+\end{document}

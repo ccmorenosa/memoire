@@ -1,0 +1,60 @@
+\begin{circuitikz}[circuitikz/bipoles/noise sources/fillcolor=QuanTEEMRed!50]
+
+    \tikzmath{
+        \y0 = 0; \y1 = 4;
+        \xR = 0; \xRLC =6; \xCin =12;
+        \xSsn =3; \xSi =9;
+    }
+
+    \node [thick, vsourceAMshape, rotate=-90] (V) at(\xR, 1) {};
+    \node [thick] at(\xR-1.25, 1) {\LARGE \(V_\text{bias}\)};
+
+    \node [thick, resistorshape, rotate=90] (R) at(\xR, 3) {};
+    \node [thick] at(\xR-0.75, 3) {\LARGE \(R\)};
+
+    \draw [thick](\xR, \y0) node[sground] {} -- (V.right)
+    (V.left) -- (R.left) (R.right) -- (\xR, \y1);
+
+    \node [thick, genericshape, rotate=-90] (RLC) at(\xRLC, 2) {};
+    \node [thick] at(\xRLC-1.25, 2) {\LARGE \(Z_\text{RLC}\)};
+    \draw [thick] (\xRLC, \y0) -- (RLC.right) (RLC.left) -- (\xRLC, \y1);
+
+    % \node [thick, capacitorshape, rotate=-90] (C) at(\xRLC, 2) {};
+    % \node [thick] at(\xRLC-1, 2) {\LARGE \(C\)};
+    % \draw [thick] (\xRLC, \y0) -- (C.right) (C.left) -- (\xRLC, \y1);
+
+    % \node [thick, resistorshape, rotate=-90] (Rp) at(\xRLC + 3, 1) {};
+    % \node [thick] at(\xRLC + 3-0.75, 1) {\LARGE \(R_p\)};
+
+    % \node [thick, cuteinductorshape, rotate=-90] (L) at(\xRLC + 3, 3) {};
+    % \node [thick] at(\xRLC + 3-0.75, 3) {\LARGE \(L\)};
+
+    % \draw [thick] (\xRLC + 3, \y0) -- (Rp.right)
+    % (Rp.left) -- (L.right) (L.left) -- (\xRLC + 3, \y1);
+
+    \node [thick, capacitorshape, rotate=-90] (Cin) at(\xCin, 2) {};
+    \node [thick] at(\xCin-1.25, 2) {\LARGE \(C_\text{in}\)};
+
+    \draw [thick] (\xCin, \y0) -- (Cin.right) (Cin.left) -- (\xCin, \y1);
+
+    \draw [thick, QuanTEEMOrange] (\xCin, \y1) to[amp, l^={\LARGE \(A_1\)}]++ (2, 0)
+    to[amp, l^={\LARGE \(A_2\)}]++ (2, 0) node (Sout) {};
+
+    \draw [thick] (\xR, \y0) -- (\xCin, \y0) (\xR, \y1) -- (\xCin, \y1);
+    \draw [thick] (Sout.base) to[short, -o]++ (0.5, 0) node [right] {\LARGE \(S_{v, \text{out}}\)};
+
+    \node [thick, vsourceNshape] at (1.5, \y1) {};
+    \node [thick, QuanTEEMRed] at(1.5, \y1 + 1) {\LARGE \(S_{T}\)};
+
+    \node [thick, vsourceNshape] at (10.5, \y1) {};
+    \node [thick, dunkelgruen] at(10.5, \y1 + 1) {\LARGE \(S_{v, \text{amp}}\)};
+
+    \node [thick, isourceNshape, rotate=-90] (Si) at (\xSsn, 2) {};
+    \node [thick, QuanTEEMBlue] at(\xSsn-1.4, 2) {\LARGE \(S_{i, \text{sn}}\)};
+    \draw [thick] (\xSsn, \y0) -- (Si.right) (Si.left) -- (\xSsn, \y1);
+
+    \node [thick, isourceNshape, rotate=-90] (Si) at (\xSi, 2) {};
+    \node [thick, lila] at(\xSi-1.4, 2) {\LARGE \(S_{i, \text{amp}}\)};
+    \draw [thick] (\xSi, \y0) -- (Si.right) (Si.left) -- (\xSi, \y1);
+
+\end{circuitikz}

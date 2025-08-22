@@ -1,0 +1,137 @@
+\documentclass[12pt]{standalone}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+%% Color package and configuration.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amsmath,amssymb,xfrac}
+
+%% Commands package.
+\usepackage{etoolbox}
+
+%% Fonts package.
+\usepackage[no-math]{fontspec}
+
+%%% Configure pgf and tikz.
+
+\pgfplotsset{
+    compat=1.18,
+    colormap={quanteem}{rgb255=(18, 45, 141) rgb255=(249, 18, 60)}
+}
+
+\usetikzlibrary{arrows.meta}
+\definecolor{cyan}{HTML}{5BCEFA}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{circuitikz}[
+    Csm/.style={C, capacitors/scale=0.7},
+    Rsm/.style={R, resistors/scale=0.7},
+    Lsm/.style={L, inductors/scale=0.7},
+    Vsm/.style={american voltage source, sources/scale=1.25},
+    Amp/.style={rmeterwa, instruments/scale=1.25, t={\large A}}
+]
+
+    % GaAs
+    \draw[QuanTEEMBlue, fill=QuanTEEMBlue] (-5, -2) rectangle (5, 2);
+
+    % Ohmic contact
+    \draw[thick, fill=black!30] (-4.5, -0.5) rectangle ++ (1.0, 1.0);
+    \draw[thick, fill=black!30] (4.5, -0.5) rectangle ++ (-1.0, 1.0);
+
+    \draw [thick] (-4.5, -0.5) --++ (1.0, 1.0) (-4.5, 0.5) --++ (1.0, -1.0);
+    \draw [thick] (4.5, -0.5) --++ (-1.0, 1.0) (4.5, 0.5) --++ (-1.0, -1.0);
+
+    \draw[black!25, fill=black!25] (-0.25, 2) --++ (0, -1.5)
+    to[out=270, in=180]++ (0.25, -0.2) to[out=0, in=270]++ (0.25, 0.2)
+    --++ (0, 1.5) --++ (-0.5, 0);
+    \draw[black!25, fill=black!25] (-0.25, -2) --++ (0, 1.5)
+    to[out=90, in=180]++ (0.25, 0.2) to[out=0, in=90]++ (0.25, -0.2)
+    --++ (0, -1.5) --++ (-0.5, 0);
+
+    Schottky
+    \draw[Goldenrod, fill=Goldenrod] (-0.2, 2) rectangle++ (0.4, -1.5);
+    \draw[Goldenrod, fill=Goldenrod] (-0.2, -2) rectangle++ (0.4, 1.5);
+
+    % \draw [cyan, fill=cyan] (-3.5, 0.0) circle (0.2);
+
+    % \draw [white, -latex, thick] (-3.2, 0.0) --++ (1.9, 0);
+
+    % \draw [cyan, fill=cyan] (-1, 0.0) circle (0.2);
+
+    % \draw [white, -latex, thick, dashed] (-0.7, 0.0) --++ (1.9, 0) node[below
+    % left] {\(\tau\)};
+
+    % \draw [cyan, fill=cyan] (1.5, 0.0) circle (0.2);
+
+    % \draw [white, -latex, thick, dashed] (-1, 0.5)
+    % to[out=90, in=0]++ (-0.5, 0.5) -- (-1.95, 1.0) node[above right] {\(1-\tau\)};
+
+    % \draw [cyan, fill=cyan] (-2.25, 1.0) circle (0.2);
+
+    \draw[thick] (-4.5, 0.0) --++ (-1.5, 0.0)
+    node[below left=0.5cm] {\LARGE \(V_{\text{bias}}\)}
+    to[Vsm] ++ (0, -2)
+    node[sground]{};
+
+    \draw[thick] (4.5, 0.0) --++ (1.5, 0)
+    % node[below right=0.75cm]{\LARGE Signal}
+    to[Amp]++ (0, -2) node[sground]{};
+
+    % \foreach \x in {-3, -2, ..., 3}{
+    %     \draw [cyan, fill=cyan] (\x, 0.0) circle (0.2);
+    % }
+    % \draw [white, -latex, thick] (-3, 0.5) --++ (6, 0);
+    % \draw [white, -latex, thick] (-3, 0.5) --++ (2, 0);
+    % \draw [white, -latex, thick] (1, 0.5) --++ (2, 0);
+
+    \draw [white, -latex, thick] (-2.5, 0.2) --++ (5, 0);
+    \draw [white, -latex, thick] (-2.5, -0.2) --++ (5, 0);
+    \draw [white, -latex, thick] (-2.5, 0.0) --++ (5, 0);
+    % \draw [white, -latex, thick] (-2.5, 0.0) --++ (2, 0);
+    % \draw [white, -latex, thick, dashed] (0.5, 0.0) --++ (2, 0)
+    % node[above=0.25cm] {\LARGE \(\tau\)}
+    % ;
+
+    \draw [cyan, fill=cyan] (-3, 0.0) circle (0.2);
+    % \draw [cyan, fill=cyan] (0, 0.0) circle (0.2);
+    % \draw [cyan, fill=cyan] (1, 0.0) circle (0.2);
+    % \draw [cyan, fill=cyan] (2, 0.0) circle (0.2);
+    \draw [cyan, fill=cyan] (3, 0.0) circle (0.2);
+
+    % \draw [white, -latex, thick] (1, 0.4) --++ (2, 0);
+    % \draw [white, -latex, thick] (-3, 0.4) --++ (2, 0);
+
+    % \draw [white, -latex, thick, dashed] (-0.5, 0.5)
+    % to[out=90, in=0]++ (-0.5, 0.5) --++ (-0.95, 0)
+    % node[above=0.25cm] {\LARGE \(1-\tau\)}
+    % ;
+
+    % \draw [white, -latex, thick, dashed] (-0.5, -0.5)
+    % to[out=270, in=0]++ (-0.5, -0.5) --++ (-0.95, 0);
+
+    % \draw [cyan, fill=cyan] (-2.25, 1.0) circle (0.2);
+
+    \draw[thick, opacity=1] (0, 2)
+    node [above right=0.5cm] {\LARGE \(V_{\text{qpc}}\)} to[Vsm] ++ (0, 2)
+    node[sground, rotate=180]{};
+
+    \draw[thick, opacity=1] (0, -2)
+    node [below right=0.5cm] {\LARGE \(V_{\text{qpc}}\)} to[Vsm] ++ (0, -2)
+    node[sground]{};
+
+\end{circuitikz}
+\end{document}

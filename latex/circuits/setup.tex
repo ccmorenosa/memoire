@@ -1,0 +1,31 @@
+\begin{circuitikz}[circuitikz/bipoles/noise sources/fillcolor=QuanTEEMRed!50]
+
+    % \draw (0, 0) node[sground] {}
+    % to[american voltage source, invert, l^={\LARGE \(V_\text{bias}\)}]++ (0, 2)
+    % to[R, l^={\LARGE \(R_\text{QPC}\)}]++ (0, 2) --++ (2, 0) node(A){}
+    % to[C, l^={\LARGE \(C\)}]++ (0, -4) --++ (-2, 0);
+
+    % \draw (A.base) --++ (2, 0) node(B){}
+    % to[L, l^={\LARGE \(L\)}]++ (0, -2)
+    % to[R, l^={\LARGE \(R_p\)}]++ (0, -2) --++ (-2, 0);
+
+    \draw (0, 0) node[sground] {}
+    to[american voltage source, invert, l^={\LARGE \(V_\text{bias}\)}]++ (0, 2)
+    to[R, l^={\LARGE \(R_\text{QPC}\)}]++ (0, 2) --++ (2, 0) node(B){}
+    to[generic, l^={\LARGE \(Z_\text{RLC}\)}]++ (0, -4) --++ (-2, 0);
+
+    \draw (B.base) --++ (3, 0) node(C){}
+    to[C, l^={\LARGE \(C_\text{in}\)}]++ (0, -4) --++ (-3, 0);
+
+    \draw (C.base) ++ (1, 0)
+    node[plain mono amp, scale=0.5] (ampA){};
+    \node at (6, 5) {\LARGE \(A_1\)};
+
+    \draw (C.base) ++ (3, 0)
+    node[plain mono amp, scale=0.5] (ampB){};
+    \node at (8, 5) {\LARGE \(A_2\)};
+
+    \draw (C.base) -- (ampA.in) (ampA.out) -- (ampB.in)
+    (ampB.out) to[short, -o]++ (0.5, 0) node [right] {\LARGE \(S_{v, \text{out}}\)};
+
+\end{circuitikz}

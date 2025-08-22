@@ -1,0 +1,86 @@
+\documentclass[12pt]{standalone}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+%% Color package and configuration.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amsmath,amssymb,xfrac}
+
+%% Commands package.
+\usepackage{etoolbox}
+
+%% Fonts package.
+\usepackage[no-math]{fontspec}
+
+%%% Configure pgf and tikz.
+
+\pgfplotsset{
+    compat=1.18,
+    colormap={quanteem}{rgb255=(18, 45, 141) rgb255=(249, 18, 60)}
+}
+
+\usetikzlibrary{arrows.meta}
+\definecolor{cyan}{HTML}{5BCEFA}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees,3d,calc, math}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{circuitikz}[
+    Csm/.style={C, capacitors/scale=0.7},
+    Rsm/.style={R, resistors/scale=0.7},
+    Lsm/.style={L, inductors/scale=0.7},
+    Vsm/.style={sinusoidal voltage source, sources/scale=1.25}
+]
+
+    \tikzmath{
+        \xFS = 0; \dxFS = 4;
+        \yFS = 0; \dyFS = 3;
+    }
+
+    \draw [black, fill=QuanTEEMBlue] (\xFS, \yFS) rectangle++ (\dxFS, -\dyFS);
+
+    \draw[-Latex, very thick] (0, -3) -- (0, 3) node[above] {\Large $E$};
+
+    \draw (0, 0) to[short, *-]++ (-2, 0) to[Vsm, l_={\Large \(V(t)\)}]++ (0, -2) node[sground] {};
+
+    \draw [-Latex, thick] (1.5, 0.5) --++ (2, 0);
+
+    % \node at (-2, 2) {\Large \(Q = 1\)};
+
+    \draw [black, fill=cyan] (1, 0.5) circle (5pt);
+    \draw [black, fill=cyan] (1, 1) circle (5pt);
+    \draw [black, fill=cyan] (1, 1.5) circle (5pt);
+    \draw [black, fill=cyan] (1, 2) circle (5pt);
+    % \draw [black, fill=cyan] (1, 2.5) circle (5pt);
+    \node [rotate=90] at (1, 2.5) {\large \(\cdots\)};
+
+    \draw [black, fill=white] (1, -0.5) circle (5pt);
+    \draw [black, fill=white] (1, -1) circle (5pt);
+    \draw [black, fill=white] (1, -1.5) circle (5pt);
+    \draw [black, fill=white] (1, -2) circle (5pt);
+    % \draw [black, fill=white] (1, -2.5) circle (5pt);
+    \node [rotate=90, white] at (1, -2.5) {\large \(\cdots\)};
+
+    \draw (\xFS + \dxFS + 0.2, \yFS - \dyFS) --++
+    (0.1, 0) --++ (0, \dyFS) --++ (-0.1, 0);
+    \draw (\xFS + \dxFS + 0.3, \yFS - \dyFS/2) --++
+    (0.1, 0) node [above, rotate=-90] {\Large Fermi sea};
+
+    \draw [opacity=0] (\xFS + \dxFS, \yFS - \dyFS) --++ (0, -0.3);
+
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass[12pt]{standalone}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+%% Color package and configuration.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amsmath,amssymb,xfrac}
+
+%% Commands package.
+\usepackage{etoolbox}
+
+%% Fonts package.
+\usepackage[no-math]{fontspec}
+
+%%% Configure pgf and tikz.
+
+\pgfplotsset{
+    compat=1.18,
+    colormap={quanteem}{rgb255=(18, 45, 141) rgb255=(249, 18, 60)}
+}
+
+
+\usetikzlibrary{arrows.meta}
+\definecolor{cyan}{HTML}{5BCEFA}
+\definecolor{purple}{HTML}{A30262}
+\definecolor{green}{HTML}{006b6b}
+\definecolor{Blue}{HTML}{091540}
+
+\definecolor{QuanTEEMRed}{HTML}{F9123C}
+\definecolor{QuanTEEMBlue}{HTML}{122D8D}
+\definecolor{QuanTEEMOrange}{HTML}{FF6700}
+
+%% Color package and configuration.
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{circuitikz}[
+    Csm/.style={C, capacitors/scale=0.7},
+    Rsm/.style={R, resistors/scale=0.7},
+    Lsm/.style={L, inductors/scale=0.7},
+    Vsm/.style={sinusoidal voltage source, sources/scale=1.25}
+]
+    \draw [black, fill=QuanTEEMBlue] (0, -2) rectangle (5.5, 0);
+
+    \draw[-Latex, very thick] (0, -2) -- (6, -2) node[below, midway] {\Large $t$};
+    \draw[-Latex, very thick] (0, -2) -- (0,2) node[above] {\Large $\left|\psi(t)\right|^2$};
+
+    \draw[-Latex] (2.1,0.75) --++ (1.3,0);
+
+    \node at (3, 1.8) {\Large $\psi(t) \propto \frac{1}{t + i W}$};
+
+    \draw[domain=0:5.5, samples=1000,variable=\x, black, thick, fill=cyan]
+    plot ({\x},{1.5 * 0.03/(0.03 + (\x - 1.7)^2)});
+
+    \draw (0, 0) to[short, *-]++ (-2, 0) to[Vsm, l_={\Large \(V(t)\)}]++ (0, -2) node[sground] {};
+
+    % \node at (1.5, -3.5) {\Large $V(t) = \frac{\hbar}{e} \frac{2 W}{t^2 + W^2}$};
+
+    \draw [black, fill=QuanTEEMBlue] (6.5, -2) rectangle (8.5, 0);
+
+    \draw[domain=6.5:8.5, samples=100,variable=\x, black, thick, fill=cyan]
+    plot ({\x}, {1.3*exp(-2.*(\x - 6.5))}) --++ (-2, 0);
+
+    \draw[-Latex, very thick] (6.5, 0) -- (9, 0) node[above] {\Large $\left|\psi(E)\right|^2$};
+    \draw[-Latex, very thick] (6.5, -2) -- (6.5,2) node[above] {\Large $E$};
+    \node at (6, 0) {\Large $E_f$};
+
+    \draw (10.2, 1) --++ (0.1, 0) --++ (0, -0.8) --++ (-0.1, 0);
+    \draw (10.2, -0.2) --++ (0.1, 0) --++ (0, -1.8) --++ (-0.1, 0);
+
+    \draw (10.3, 0.6) --++ (0.1, 0) node [right] {\Large Leviton};
+    \draw (10.3, -1.1) --++ (0.1, 0) node [right] {\Large Fermi sea};
+    \draw [opacity=0] (12.3, -1.1) --++ (1, 0);
+
+\end{circuitikz}
+\end{document}

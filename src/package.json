@@ -1,0 +1,57 @@
+{
+  "name": "reveal.js-remote",
+  "description": "A presentation control server",
+  "author": "Jochen Wierum, Cologne Intelligence GmbH",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp default",
+    "app": "gulp app",
+    "diapo": "gulp diapo",
+    "remote": "gulp remote",
+    "start": "http-server -c-1 dist/presentations"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cologneintelligence/reveal.js-remote.git"
+  },
+  "volta": {
+    "node": "20.17.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "command-line-args": "^6.0.0",
+    "command-line-usage": "^7.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@tailwindcss/postcss": "^4.0.3",
+    "core-js": "^3.38.1",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-file-include": "^2.3.0",
+    "gulp-header-comment": "^0.10.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^6.0.0",
+    "http-server": "^14.1.1",
+    "log-symbols": "^7.0.0",
+    "postcss-nested": "^7.0.2",
+    "rollup": "^4.22.4",
+    "sass": "^1.79.4",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^4.0.3",
+    "through2": "^4.0.2"
+  }
+}

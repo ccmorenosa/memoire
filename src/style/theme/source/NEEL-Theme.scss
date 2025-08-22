@@ -1,0 +1,89 @@
+/**
+ * Dracula Dark theme for reveal.js.
+ * Based on https://draculatheme.com
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Include theme-specific fonts
+$systemFontsSansSerif: Roboto, sans-serif;
+$systemFontsMono: Cascadia Mono, monospace;
+
+/**
+ * Dracula colors by Zeno Rocha
+ * https://draculatheme.com/contribute
+ */
+html * {
+	color-profile: sRGB;
+	rendering-intent: auto;
+}
+
+$background: #dddddd;
+$foreground: #042b4d;
+$selection: #eb6d00;
+$comment: #508a99;
+$red: #d42a00;
+$orange: #c24700;
+$yellow: #ba8900;
+$green: #62b800;
+$purple: #5f00cc;
+$cyan: #1fbea4;
+$pink: #941061;
+
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainColor: $foreground;
+$headingColor: $purple;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: $background;
+$linkColor: $pink;
+$linkColorHover: $green;
+$selectionBackgroundColor: $selection;
+$inlineCodeColor: $pink;
+$listBulletColor: $orange;
+
+$mainFont: $systemFontsSansSerif;
+$codeFont: $systemFontsMono;
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color($background);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Define additional color effects based on Dracula spec
+// https://spec.draculatheme.com/
+:root {
+	--r-bold-color: #{$orange};
+	--r-italic-color: #{$orange};
+	--r-inline-code-color: #{$inlineCodeColor};
+	--r-list-bullet-color: #{$listBulletColor};
+}
+
+.reveal {
+	strong, b {
+		color: var(--r-bold-color);
+	}
+	em, i, blockquote {
+		color: var(--r-italic-color);
+	}
+	code {
+		color: var(--r-inline-code-color);
+	}
+	// Dracula colored list bullets and numbers
+	ul, ol {
+		li::marker {
+			color: var(--r-list-bullet-color);
+		}
+	}
+}

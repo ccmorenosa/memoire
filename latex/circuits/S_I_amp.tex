@@ -1,0 +1,24 @@
+\begin{circuitikz}[circuitikz/bipoles/noise sources/fillcolor=QuanTEEMRed!50]
+
+    \draw (0, 0) node[sground] {} to[R, l^={\LARGE \(R_\text{QPC}\)}]++ (0, 2.5)
+    --++ (3, 0) node(A){}
+    to[generic, l_={\LARGE \(Z_\text{RLC}\)}]++ (0, -2.5) --++ (-3, 0);
+
+    \draw (A.base) --++ (3, 0) node(B){}
+    to[nI, l_={\LARGE \(S_{i, \text{amp}}\)}]++ (0, -2.5) --++ (-3, 0);
+
+    \draw (B.base) --++ (2, 0) node(C){}
+    to[C, l^={\LARGE \(C_\text{in}\)}]++ (0, -2.5) --++ (-3, 0);
+
+    \draw (C.base) ++ (1, 0)
+    node[plain mono amp, scale=0.4] (ampA){};
+    \node at (9, 3.5) {\LARGE \(A_1\)};
+
+    \draw (C.base) ++ (3, 0)
+    node[plain mono amp, scale=0.4] (ampB){};
+    \node at (11, 3.5) {\LARGE \(A_2\)};
+
+    \draw (C.base) -- (ampA.in) (ampA.out) -- (ampB.in)
+    (ampB.out) to[short, -o]++ (0.5, 0) node [right] {\LARGE \(S_{i, \text{out}}\)};
+
+\end{circuitikz}
