@@ -10,8 +10,8 @@ let deck = new Reveal({
     // center: true,
     // hash: true,
 
-    width: 3840 / 1.7,
-    height: 2160 / 1.7,
+    width: 3840 / 1.5,
+    height: 2160 / 1.5,
     margin: 0.04,
     minScale: 0.5,
     maxScale: 1,

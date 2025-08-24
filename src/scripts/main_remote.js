@@ -6,8 +6,8 @@ import RevealRemote from '/_remote/plugin/remote.esm.js';
 
 let deck = new Reveal({
 
-    width: 3840/1.7,
-    height: 2160/1.7,
+    width: 3840/1.5,
+    height: 2160/1.5,
     minScale: 0.5,
     maxScale: 1,
 
