@@ -65,7 +65,7 @@ class TitleSlide extends HTMLElement {
         const Quanteem_logo = document.createElement("div");
         Quanteem_logo.classList.add("mr-10");
         const Quanteem_image = document.createElement("img");
-        Quanteem_image.src = "/public/Logo_Quanteem.svg";
+        Quanteem_image.src = "../public/Logo_Quanteem.svg";
         Quanteem_image.setAttribute("width", 400);
         Quanteem_image.setAttribute("height", 400);
         Quanteem_logo.appendChild(Quanteem_image);
@@ -73,7 +73,7 @@ class TitleSlide extends HTMLElement {
         const UBE_logo = document.createElement("div");
         UBE_logo.classList.add("mr-10");
         const UBE_image = document.createElement("img");
-        UBE_image.src = "/public/Logo_UBE.svg";
+        UBE_image.src = "../public/Logo_UBE.svg";
         UBE_image.setAttribute("width", 270);
         UBE_image.setAttribute("height", 270);
         UBE_image.classList.add("ml-10");
@@ -82,7 +82,7 @@ class TitleSlide extends HTMLElement {
         const Neel_logo = document.createElement("div");
         Neel_logo.classList.add("mr-10");
         const Neel_image = document.createElement("img");
-        Neel_image.src = "/public/Neel_Q.svg";
+        Neel_image.src = "../public/Neel_Q.svg";
         Neel_image.setAttribute("width", 313);
         Neel_image.setAttribute("height", 313);
         Neel_image.classList.add("ml-10");
@@ -91,7 +91,7 @@ class TitleSlide extends HTMLElement {
         const CNRS_logo = document.createElement("div");
         CNRS_logo.classList.add("mr-10");
         const CNRS_image = document.createElement("img");
-        CNRS_image.src = "/public/CNRS.svg";
+        CNRS_image.src = "../public/CNRS.svg";
         CNRS_image.setAttribute("width", 168);
         CNRS_image.setAttribute("height", 168);
         CNRS_image.classList.add("ml-10");
@@ -118,7 +118,7 @@ class TitleSlide extends HTMLElement {
         // const neel_logo = document.createElement("div");
         // neel_logo.classList.add("mr-10");
         // const neel_image = document.createElement("img");
-        // neel_image.src = "/public/Neel.png";
+        // neel_image.src = "../public/Neel.png";
         // neel_image.setAttribute("width", 330);
         // neel_image.setAttribute("height", 115);
         // neel_logo.appendChild(neel_image);
@@ -126,7 +126,7 @@ class TitleSlide extends HTMLElement {
         // const cnrs_logo = document.createElement("div");
         // // cnrs_logo.classList.add("ml-10");
         // const cnrs_image = document.createElement("img");
-        // cnrs_image.src = "/public/CNRS.svg";
+        // cnrs_image.src = "../public/CNRS.svg";
         // cnrs_image.setAttribute("width", 170);
         // cnrs_image.setAttribute("height", 170);
         // cnrs_image.classList.add("ml-10");
@@ -207,9 +207,9 @@ class TopBar extends HTMLElement{
                     const atom_a = document.createElement("a");
                     const atom_img = document.createElement("img");
                     if (atomCount == Number(actualAtom)) {
-                        atom_img.src = "/public/atom_active.svg";
+                        atom_img.src = "../public/atom_active.svg";
                     } else {
-                        atom_img.src = "/public/atom.svg";
+                        atom_img.src = "../public/atom.svg";
                     }
                     atom_img.width = "30";
                     atom_img.style.marginRight = "0";
